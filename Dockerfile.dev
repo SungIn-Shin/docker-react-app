@@ -1,0 +1,19 @@
+#Docker 개발환경
+FROM node:alpine
+
+WORKDIR /usr/src/app
+
+COPY package.json ./
+
+# bash install
+RUN apk update
+
+RUN apk add -no-cache bash
+# bash install - end
+
+
+RUN npm install
+
+COPY ./ ./
+
+CMD ["npm", "run", "start"]

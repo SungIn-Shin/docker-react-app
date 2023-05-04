@@ -1,0 +1,46 @@
+################################################################
+# 개발환경 - 시작
+################################################################
+# version: "3"
+# services:
+#   # react
+#   react:
+#     build:
+#       context: .
+#       dockerfile: Dockerfile.dev
+#     ports:
+#       - "3000:3000"
+#     volumes:
+#       - /usr/src/app/node_modules
+#       - ./:/usr/src/app
+#     stdin_open: true
+#   # react - test
+#   tests:
+#     build:
+#       context: .
+#       dockerfile: Dockerfile.dev
+#     volumes:
+#       - /usr/src/app/node_modules
+#       - ./:/usr/src/app
+#     command: ["npm", "run", "test"]
+
+################################################################
+# 개발환경 - 끝
+################################################################
+
+################################################################
+# 운영환경 - 시작
+################################################################
+version: "3"
+services:
+  # react
+  react:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
+    volumes:
+      - /usr/src/app/node_modules
+      - ./:/usr/src/app
+    stdin_open: true
